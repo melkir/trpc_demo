@@ -31,7 +31,6 @@ const appRouter = t.router({
       }, 200);
 
       return () => {
-        console.log("cleaning up");
         clearInterval(timer);
       };
     });

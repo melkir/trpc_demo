@@ -1,8 +1,10 @@
 {
   "packageManager": "yarn@3.2.1",
   "scripts": {
-    "start": "node -r ts-node/register --loader ts-node/esm src/server.mts",
-    "start:dev": "nodemon src/server.mts"
+    "start:client": "node -r ts-node/register --loader ts-node/esm src/client.mts",
+    "start:client:dev": "nodemon src/client.mts",
+    "start:server": "node -r ts-node/register --loader ts-node/esm src/server.mts",
+    "start:server:dev": "nodemon src/server.mts"
   },
   "dependencies": {
     "@trpc/client": "^10.0.0-alpha.38",

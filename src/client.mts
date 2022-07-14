@@ -37,16 +37,16 @@ async function main() {
 
   // Why can't use rxjs/operators here?
   // It would be nice to simple do randomNumber$.pipe(take(3))
-  const randomNumber$ = await proxy.randomNumber.subscription();
-
   let count = 0;
   await new Promise<void>((resolve) => {
-    const sub = randomNumber$.subscribe({
+    const subscription = client.subscription("randomNumber", undefined, {
       next(data) {
+        // ^ note that `data` here is inferred
         console.log("received", data);
         count++;
         if (count > 3) {
-          sub.unsubscribe();
+          // stop after 3 pulls
+          subscription.unsubscribe();
           resolve();
         }
       },
