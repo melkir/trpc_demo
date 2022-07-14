@@ -1,0 +1,4 @@
+.deploy
+.idea
+.yarn
+node_modules

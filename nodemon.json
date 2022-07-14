@@ -1,0 +1,7 @@
+{
+  "restartable": "rs",
+  "watch": [
+    "./src/*.mts"
+  ],
+  "exec": "node --loader ts-node/esm"
+}
