@@ -2,7 +2,7 @@ import { CreateHTTPContextOptions, createHTTPServer } from "@trpc/server/adapter
 import { CreateWSSContextFnOptions, applyWSSHandler } from "@trpc/server/adapters/ws";
 import { observable } from "@trpc/server/observable";
 import { inferAsyncReturnType, initTRPC } from "@trpc/server";
-import ws from "ws";
+import { WebSocketServer } from "ws";
 import { z } from "zod";
 
 // This is how you initialize a context for the server
@@ -50,7 +50,7 @@ const { server, listen } = createHTTPServer({
 });
 
 // ws server
-const wss = new ws.Server({ server });
+const wss = new WebSocketServer({ server });
 applyWSSHandler<AppRouter>({
   wss,
   router: appRouter,
@@ -61,3 +61,5 @@ applyWSSHandler<AppRouter>({
 //   console.log('Connected clients', wss.clients.size);
 // }, 1000);
 listen(2022);
+
+console.log("🐹 Listening on: http://localhost:2022");
